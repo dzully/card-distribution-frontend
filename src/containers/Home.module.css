@@ -1,0 +1,13 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
+
+.card {
+  padding: 10px;
+  min-width: 400px;
+  min-height: 200px;
+}
