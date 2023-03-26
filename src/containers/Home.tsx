@@ -1,13 +1,20 @@
 import Card from "@mui/material/Card";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import Submission from "../components/Submission";
+import { convertEachPersonToObject, handleShuffle } from "../utils";
 import styles from "./Home.module.css";
+
+interface outputCardProps {
+  [key: string]: string;
+}
 
 const Home = () => {
   // This is the hook that manages the number of players
   const [numberOfPlayers, setNumberOfPlayers] = useState<number>();
   // This is the hook that manages if the error is displayed
-  const [error, setError] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>();
+  const [outputCard, setOutputCard] = useState<outputCardProps>({});
+  console.log({ outputCard });
 
   // This is the function that handles the number of players
   const handleNumberOfPlayer = (value: string) => {
@@ -16,8 +23,17 @@ const Home = () => {
     setNumberOfPlayers(Number(value));
   };
 
-  const handleSubmitPlayer = () => {
-    console.log("handleSubmitPlayer");
+  const handleSubmitPlayer = (e: ChangeEvent<HTMLFormElement>) => {
+    // prevent the default behavior of the form
+    e.preventDefault();
+    // check if the number of players is valid
+    if (!(numberOfPlayers && numberOfPlayers > 0)) {
+      return;
+    }
+    // call the function that shuffles the players and gets the output
+    const output = handleShuffle({ totalPlayers: numberOfPlayers });
+    // set the outputCard with the output of the shuffle
+    setOutputCard(convertEachPersonToObject(output));
   };
 
   return (
@@ -27,7 +43,7 @@ const Home = () => {
           handleChange={handleNumberOfPlayer}
           inputValue={numberOfPlayers}
           inputError={error}
-          handleClick={handleSubmitPlayer}
+          handleSubmit={handleSubmitPlayer}
         />
       </Card>
     </div>

@@ -1,33 +1,31 @@
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import { ChangeEvent } from "react";
+import Header from "./Header";
 import styles from "./Submission.module.css";
 
 interface SubmissionProps {
-  title?: string;
   buttonTitle?: string;
-  description?: string;
   inputLabel?: string;
   inputValue?: number;
   inputType?: string;
   handleChange?: (value: string) => void;
   inputHelperText?: string;
   inputError?: boolean;
-  handleClick?: () => void;
+  handleSubmit?: (e: ChangeEvent<HTMLFormElement>) => void;
+  withHeader?: boolean;
 }
 
 const Submission = ({
-  title,
   buttonTitle,
-  description,
   inputLabel,
   inputValue,
   inputType,
   inputError,
   handleChange,
   inputHelperText,
-  handleClick,
+  handleSubmit,
+  withHeader,
 }: SubmissionProps) => {
   const onHandleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -39,13 +37,8 @@ const Submission = ({
 
   return (
     <div className={styles.root}>
-      <div>
-        <Typography variant="h4">{title}</Typography>
-        <Typography variant="body1" className={styles.description}>
-          {description}
-        </Typography>
-      </div>
-      <div className={styles.wrapper}>
+      {withHeader ? <Header /> : null}
+      <form className={styles.wrapper} onSubmit={handleSubmit}>
         <TextField
           type={inputType}
           label={inputLabel}
@@ -56,15 +49,15 @@ const Submission = ({
           error={inputError}
         />
         <Button
-          disabled={inputError}
+          disabled={inputError || !inputValue}
           variant="contained"
           color="primary"
           className={styles.action}
-          onClick={handleClick}
+          type="submit"
         >
           {buttonTitle}
         </Button>
-      </div>
+      </form>
     </div>
   );
 };
@@ -72,14 +65,14 @@ const Submission = ({
 Submission.defaultProps = {
   title: "Card Distribution",
   buttonTitle: "submit",
-  description: "Enter Number Of Players To Distribute Cards",
   inputLabel: "Number of players",
   inputValue: "",
   inputType: "number",
   inputHelperText: "Input value does not exist or value is invalid",
   handleChange: () => {},
   inputError: false,
-  handleClick: () => {},
+  handleSubmit: () => {},
+  withHeader: true,
 };
 
 export default Submission;
