@@ -30,15 +30,19 @@ const Result = ({ item, defaultHeight }: ResultProps) => {
       }}
       subheader={subheader}
     >
-      {Object.keys(item).map((key) => (
-        <ListItem key={key}>
-          <ListItemText
-            primary={`${player} ${key}`}
-            secondary={item[key]}
-            className={styles.listItemText}
-          />
-        </ListItem>
-      ))}
+      {Object.keys(item).map((key) => {
+        const playerCard = item[key] || "-";
+
+        return (
+          <ListItem key={key}>
+            <ListItemText
+              primary={`${player} ${key}`}
+              secondary={playerCard}
+              className={styles.listItemText}
+            />
+          </ListItem>
+        );
+      })}
     </List>
   );
 };

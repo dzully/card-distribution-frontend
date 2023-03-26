@@ -94,11 +94,6 @@ export const handleShuffle = ({ totalPlayers }: { totalPlayers: number }) => {
     .replace(/A/g, "1")
     .replace(/J/g, "11")
     .replace(/Q/g, "12")
-    .replace(/S/g, "=S,")
-    .replace(/H/g, "=H,")
-    .replace(/D/g, "=D,")
-    .replace(/C/g, "=C,")
     .replace(/,/g, " ")
-    .replace(/-/g, "")
     .replace(/=/g, "=");
 };

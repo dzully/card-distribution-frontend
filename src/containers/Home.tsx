@@ -1,5 +1,6 @@
 import Card from "@mui/material/Card";
 import { ChangeEvent, Suspense, lazy, useState } from "react";
+import CustomLoading from "../components/CustomLoading";
 import Header from "../components/Header";
 import Submission from "../components/Submission";
 import { convertEachPersonToObject, handleShuffle } from "../utils";
@@ -17,7 +18,6 @@ const Home = () => {
   // This is the hook that manages if the error is displayed
   const [error, setError] = useState<boolean>();
   const [outputCard, setOutputCard] = useState<outputCardProps>({});
-  console.log({ outputCard });
 
   // This is the function that handles the number of players
   const handleNumberOfPlayer = (value: string) => {
@@ -41,7 +41,7 @@ const Home = () => {
   };
 
   return (
-    <div className={styles.root}>
+    <div className={styles.root} data-testid="home-container">
       <Card className={styles.card}>
         <div className={styles.content}>
           <Header />
@@ -51,7 +51,7 @@ const Home = () => {
             inputError={error}
             handleSubmit={handleSubmitPlayer}
           />
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<CustomLoading />}>
             {Object.keys(outputCard).length > 0 && <Result item={outputCard} />}
           </Suspense>
         </div>

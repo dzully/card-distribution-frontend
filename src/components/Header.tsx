@@ -7,7 +7,7 @@ interface HeaderProps {
 }
 
 const Header = ({ title, description }: HeaderProps) => (
-  <div>
+  <div data-testid="header-container">
     <Typography variant="h4">{title}</Typography>
     <Typography variant="body1" className={styles.description}>
       {description}

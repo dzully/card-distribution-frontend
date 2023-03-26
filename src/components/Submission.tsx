@@ -33,7 +33,11 @@ const Submission = ({
   };
 
   return (
-    <form className={styles.wrapper} onSubmit={handleSubmit}>
+    <form
+      className={styles.wrapper}
+      onSubmit={handleSubmit}
+      data-testid="submission-container"
+    >
       <TextField
         type={inputType}
         label={inputLabel}
@@ -42,6 +46,8 @@ const Submission = ({
         className={styles.input}
         helperText={inputError ? inputHelperText : ""}
         error={inputError}
+        data-testid="textbox"
+        inputProps={{ "data-testid": "textbox-input" }}
       />
       <Button
         disabled={inputError || !inputValue}
