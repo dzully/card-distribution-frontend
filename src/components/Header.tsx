@@ -6,16 +6,14 @@ interface HeaderProps {
   description?: string;
 }
 
-const Header = ({ title, description }: HeaderProps) => {
-  return (
-    <div>
-      <Typography variant="h4">{title}</Typography>
-      <Typography variant="body1" className={styles.description}>
-        {description}
-      </Typography>
-    </div>
-  );
-};
+const Header = ({ title, description }: HeaderProps) => (
+  <div>
+    <Typography variant="h4">{title}</Typography>
+    <Typography variant="body1" className={styles.description}>
+      {description}
+    </Typography>
+  </div>
+);
 
 Header.defaultProps = {
   title: "Card Distribution",

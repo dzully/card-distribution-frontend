@@ -1,8 +1,11 @@
 import Card from "@mui/material/Card";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, Suspense, lazy, useState } from "react";
+import Header from "../components/Header";
 import Submission from "../components/Submission";
 import { convertEachPersonToObject, handleShuffle } from "../utils";
 import styles from "./Home.module.css";
+
+const Result = lazy(() => import("../components/Result"));
 
 interface outputCardProps {
   [key: string]: string;
@@ -20,7 +23,8 @@ const Home = () => {
   const handleNumberOfPlayer = (value: string) => {
     // It sets the error if the number of players is less than 0
     setError(Number(value) <= 0);
-    setNumberOfPlayers(Number(value));
+    const parsedValue = (Number(value) || "") as number;
+    setNumberOfPlayers(parsedValue);
   };
 
   const handleSubmitPlayer = (e: ChangeEvent<HTMLFormElement>) => {
@@ -39,12 +43,18 @@ const Home = () => {
   return (
     <div className={styles.root}>
       <Card className={styles.card}>
-        <Submission
-          handleChange={handleNumberOfPlayer}
-          inputValue={numberOfPlayers}
-          inputError={error}
-          handleSubmit={handleSubmitPlayer}
-        />
+        <div className={styles.content}>
+          <Header />
+          <Submission
+            handleChange={handleNumberOfPlayer}
+            inputValue={numberOfPlayers}
+            inputError={error}
+            handleSubmit={handleSubmitPlayer}
+          />
+          <Suspense fallback={<div>Loading...</div>}>
+            {Object.keys(outputCard).length > 0 && <Result item={outputCard} />}
+          </Suspense>
+        </div>
       </Card>
     </div>
   );

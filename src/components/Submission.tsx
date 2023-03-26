@@ -1,7 +1,6 @@
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 import { ChangeEvent } from "react";
-import Header from "./Header";
 import styles from "./Submission.module.css";
 
 interface SubmissionProps {
@@ -13,7 +12,6 @@ interface SubmissionProps {
   inputHelperText?: string;
   inputError?: boolean;
   handleSubmit?: (e: ChangeEvent<HTMLFormElement>) => void;
-  withHeader?: boolean;
 }
 
 const Submission = ({
@@ -25,7 +23,6 @@ const Submission = ({
   handleChange,
   inputHelperText,
   handleSubmit,
-  withHeader,
 }: SubmissionProps) => {
   const onHandleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -36,29 +33,26 @@ const Submission = ({
   };
 
   return (
-    <div className={styles.root}>
-      {withHeader ? <Header /> : null}
-      <form className={styles.wrapper} onSubmit={handleSubmit}>
-        <TextField
-          type={inputType}
-          label={inputLabel}
-          value={inputValue}
-          onChange={onHandleChange}
-          className={styles.input}
-          helperText={inputError ? inputHelperText : ""}
-          error={inputError}
-        />
-        <Button
-          disabled={inputError || !inputValue}
-          variant="contained"
-          color="primary"
-          className={styles.action}
-          type="submit"
-        >
-          {buttonTitle}
-        </Button>
-      </form>
-    </div>
+    <form className={styles.wrapper} onSubmit={handleSubmit}>
+      <TextField
+        type={inputType}
+        label={inputLabel}
+        value={inputValue}
+        onChange={onHandleChange}
+        className={styles.input}
+        helperText={inputError ? inputHelperText : ""}
+        error={inputError}
+      />
+      <Button
+        disabled={inputError || !inputValue}
+        variant="contained"
+        color="primary"
+        className={styles.action}
+        type="submit"
+      >
+        {buttonTitle}
+      </Button>
+    </form>
   );
 };
 
@@ -72,7 +66,6 @@ Submission.defaultProps = {
   handleChange: () => {},
   inputError: false,
   handleSubmit: () => {},
-  withHeader: true,
 };
 
 export default Submission;
