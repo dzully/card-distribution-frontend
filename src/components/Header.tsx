@@ -1,7 +1,7 @@
 import Typography from "@mui/material/Typography";
 import styles from "./Header.module.css";
 
-interface HeaderProps {
+export interface HeaderProps {
   title?: string;
   description?: string;
 }

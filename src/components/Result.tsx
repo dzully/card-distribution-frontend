@@ -8,7 +8,7 @@ interface itemProps {
   [key: string]: string;
 }
 
-interface ResultProps {
+export interface ResultProps {
   item: itemProps;
   defaultHeight?: number;
 }
