@@ -53,6 +53,28 @@ Built With
 - React
 - Material-UI
 
+## Storybook
+
+Storybook is a development environment for UI components. It allows you to browse a component library, view the different states of each component, and interactively develop and test components.
+To run the storybook, simply run the following command:
+
+```
+yarn storybook
+```
+
+## Cypress
+
+Cypress is a next generation front end testing tool built for the modern web. The tool is installed as a dev dependency and can be run from the command line.
+To run the cypress, simply run the following command:
+
+```
+yarn run cypress open
+```
+
+## Sentry
+
+Sentry is an open-source error tracking tool that helps all software teams discover, triage, and prioritize errors in real-time. Sentry is installed as a dev dependency and can be run from the command line. We setup the sentry to track the error in the application.
+
 ## Docker
 
 To run this application with Docker, you can use the provided Dockerfile to build an image of the application.
