@@ -1,8 +1,11 @@
 # Card Distrubution
 
-The task is to distribute a deck of 52 playing cards randomly to a given number of people, and output the result in a specific format. The program must be written in PHP, JavaScript, jQuery, or ReactJS and accept a numerical value for the number of people to distribute the cards to. If the input value is invalid, the program must display an error message and terminate. The output format must follow specific rules, including using abbreviations for the suits, using letters to represent face cards, and separating the cards distributed to each person with commas.
+Card Distribution is a program that can shuffle and distribute a deck of 52 playing cards randomly to a given number of people. The program is written in ReactJS and accept a numerical value for the number of people to distribute the cards to. If the input value is invalid, the program will display an error message and terminate. The output format will follow specific rules, including using abbreviations for the suits, using letters to represent face cards, and separating the cards distributed to each person with commas.
 
 ## Live Demo
+
+This project is deployed on Vercel.
+You can view the live demo of the project here:
 
 <https://card-distribution-frontend.vercel.app/>
 
@@ -14,11 +17,11 @@ In terms of implementation, i use ReactJS to create the program. We can validate
 
 ## Idea behind the solution
 
-This task is designed to test the candidate's ability to write a program that can shuffle and distribute a deck of cards randomly to a given number of people. It tests the candidate's knowledge of programming concepts such as arrays, loops, and random number generation, as well as their ability to follow specific requirements and output the result in a specific format. It also tests their ability to validate input and handle errors. Overall, the task is meant to simulate a real-world programming problem and test the candidate's skills and experience.
+This task is designed to test build a program that can shuffle and distribute a deck of 52 playing cards randomly to a given number of people. The program must be written in ReactJS and accept a numerical value for the number of people to distribute the cards to. If the input value is invalid, the program must display an error message and terminate. The output format must follow specific rules, including using abbreviations for the suits, using letters to represent face cards, and separating the cards distributed to each person with commas.
 
 ## Getting Started
 
-To get started, clone the repository and run the following commands:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. To get started, clone the repository and run the following commands:
 
 ## Setup Environment
 
@@ -42,7 +45,7 @@ You will need to have the following installed on your machine:
 
 ## Running the Tests
 
-To run the tests, simply run the following command:
+The tests are written using Jest and Enzyme. To run the tests, simply run the following command:
 
 ```
 npm test
@@ -55,8 +58,7 @@ Built With
 
 ## Storybook
 
-Storybook is a development environment for UI components. It allows you to browse a component library, view the different states of each component, and interactively develop and test components.
-To run the storybook, simply run the following command:
+Storybook is a development environment for UI components. It allows you to browse a component library, view the different states of each component, and interactively develop and test components. To run the storybook, simply run the following command:
 
 ```
 yarn storybook
@@ -64,8 +66,7 @@ yarn storybook
 
 ## Cypress
 
-Cypress is a next generation front end testing tool built for the modern web. The tool is installed as a dev dependency and can be run from the command line.
-To run the cypress, simply run the following command:
+Cypress is a next generation front end testing tool built for the modern web. The tool is installed as a dev dependency and can be run from the command line. To run the cypress, simply run the following command:
 
 ```
 yarn run cypress open
