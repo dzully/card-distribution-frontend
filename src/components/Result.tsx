@@ -24,6 +24,7 @@ const Result = ({ item, defaultHeight }: ResultProps) => {
 
   return (
     <List
+      data-testid="result"
       sx={{
         overflow: "auto",
         maxHeight: defaultHeight,
@@ -34,7 +35,7 @@ const Result = ({ item, defaultHeight }: ResultProps) => {
         const playerCard = item[key] || "-";
 
         return (
-          <ListItem key={key}>
+          <ListItem key={key} data-testid="result-item">
             <ListItemText
               primary={`${player} ${key}`}
               secondary={playerCard}

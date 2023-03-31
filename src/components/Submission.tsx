@@ -55,6 +55,7 @@ const Submission = ({
         color="primary"
         className={styles.action}
         type="submit"
+        data-testid="submit-button"
       >
         {buttonTitle}
       </Button>
