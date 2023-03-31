@@ -78,6 +78,7 @@ export const handleShuffle = ({ totalPlayers }: { totalPlayers: number }) => {
     // Add the player number to the output
     output += `Person ${i + 1}: `;
     // Loop through each card
+    // eslint-disable-next-line
     cardsForPerson.forEach((card) => {
       // Add the card value to the output
       output += `${getCardValue(card)}-${getCardSuit(card)},`;
