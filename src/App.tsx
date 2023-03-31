@@ -4,6 +4,7 @@ import {
   createTheme,
   useMediaQuery,
 } from "@mui/material";
+import * as Sentry from "@sentry/react";
 import React from "react";
 import styles from "./App.module.css";
 import Home from "./containers/Home";
@@ -47,4 +48,13 @@ const App = () => {
   );
 };
 
-export default App;
+// Wrap the AppView in an error boundary
+const AppErrorBoundary = Sentry.withErrorBoundary(App, {
+  // Render a fallback UI if an error occurs
+  fallback: <p>an error has occurred</p>,
+});
+
+// Wrap the AppErrorBoundary in a profiler to track performance metrics
+const AppWithProfiler = Sentry.withProfiler(AppErrorBoundary);
+
+export default AppWithProfiler;
